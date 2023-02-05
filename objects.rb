@@ -1,15 +1,24 @@
-class User
-  attr_accessor :name, :age, :email
+class Friend
+  @@myname = "Fred" # a class variable
 
-  def initialize(name, age, email)
-    @name = name
-    @age = age
-    @email = email
+  def initialize(name, gender, phone)
+    @name, @sex, @phone = name, gender, phone
+    # These are instance variables
   end
+
+  def hello   # an instance method
+    puts "Hi, I'm #{@name}."
+  end
+
+  def Friend.our_common_friend   # a class method
+    puts "We are all friends of #{@@myname}."
+  end
+
 end
 
-user = User.new("John Doe", 30, "johndoe@example.com")
-user.name = 'Mateus'
-puts user.name # "John Doe"
-puts user.age # 30
-puts user.email # "johndoe@example.com"
+f1 = Friend.new("Susan", "female", "555-0123")
+f2 = Friend.new("Tom", "male", "555-4567")
+
+f1.hello                  # Hi, I'm Susan.
+f2.hello                  # Hi, I'm Tom.
+Friend.our_common_friend  # We are all friends of Fred.
